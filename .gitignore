@@ -3,3 +3,5 @@ __pycache__/
 ext/
 *.pyi
 *.pyd
+.vscode/
+build/

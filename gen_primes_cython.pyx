@@ -13,7 +13,8 @@ cpdef int count_primes_less_than(int n):
         if not is_prime[base]:
             # Already filtered out, skip
             continue
-
+        
+        # Mark all multiples of base as non prime, starting from the next multiple after base
         is_prime[base + base :: base] = False
 
     return np.count_nonzero(is_prime[2:])
