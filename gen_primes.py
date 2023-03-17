@@ -1,17 +1,17 @@
 import numpy as np
 
 
-def gen_primes(n: int):
-    """Generate prime numbers less than n"""
-    unfiltered = np.arange(2, n, dtype=int)
-    is_prime = np.ones(shape=n - 2, dtype=bool)
+def count_primes_less_than(n: int):
+    """Count the number of prime numbers less than n"""
+    is_prime = np.ones(shape=n, dtype=bool)
 
-    for start_index in range(len(unfiltered)):
-        if not is_prime[start_index]:
-            # Already filtered out skip
+    for base in range(2, n):
+        # base is both start index and step
+        # used to cross out multiples of base
+        if not is_prime[base]:
+            # Already filtered out, skip
             continue
 
-        step = unfiltered[start_index]
-        is_prime[start_index + step :: step] = False
+        is_prime[base + base :: base] = False
 
-    return unfiltered[is_prime]
+    return np.count_nonzero(is_prime[2:])
