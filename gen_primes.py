@@ -15,4 +15,6 @@ def count_primes_less_than(n: int):
         # Mark all multiples of base as non prime, starting from the next multiple after base
         is_prime[base + base :: base] = False
 
+    # Skip first two is_prime entries as we started eliminating primes from base=2
+    # we don't want to include base=0 and base=1 in the count
     return np.count_nonzero(is_prime[2:])

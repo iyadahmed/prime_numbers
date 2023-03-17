@@ -22,6 +22,8 @@ int main(int argc, char **argv)
         }
     }
 
+    // Skip first two is_prime entries as we started eliminating primes from base=2
+    // we don't want to include base=0 and base=1 in the count
     std::cout << "Number of primes less than " << n << " equals " << std::count(is_prime.begin() + 2, is_prime.end(), true) << std::endl;
 
     return 0;
