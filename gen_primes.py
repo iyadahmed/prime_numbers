@@ -1,7 +1,10 @@
+import numpy as np
+
+
 def gen_primes(n: int):
     """Generate prime numbers less than n"""
-    unfiltered = list(range(2, n))
-    is_prime = [True] * n
+    unfiltered = np.arange(2, n, dtype=int)
+    is_prime = np.ones(shape=n - 2, dtype=bool)
 
     for start_index in range(len(unfiltered)):
         if not is_prime[start_index]:
@@ -9,7 +12,6 @@ def gen_primes(n: int):
             continue
 
         step = unfiltered[start_index]
-        for i in range(start_index + step, len(unfiltered), step):
-            is_prime[i] = False
+        is_prime[start_index + step :: step] = False
 
-    return [number for number, is_prime_number in zip(unfiltered, is_prime) if is_prime_number]
+    return unfiltered[is_prime]
