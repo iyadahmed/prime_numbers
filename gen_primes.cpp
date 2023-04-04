@@ -9,9 +9,10 @@ static size_t count_primes_lt(int n)
     // Assume all numbers are prime at first
     std::vector<bool> is_prime(n, true);
 
-    size_t result = 0;
+    size_t result = 1; // Include the number 2 in the count by initializing result to 1
 
-    for (int base = 2; base < n; base++)
+    // Odd only sieve
+    for (int base = 3; base < n; base += 2)
     {
         if (!is_prime[base])
             // Already filtered out, skip
