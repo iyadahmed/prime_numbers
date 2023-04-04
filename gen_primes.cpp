@@ -2,13 +2,14 @@
 #include <iostream>
 #include <vector>
 
-
 // NOTE: static inlining is important for speed here, removing "static" makes it slower!
 // also -O2 G++ options is faster than -O3 for some reason for this specific program
 static size_t count_primes_lt(int n)
 {
     // Assume all numbers are prime at first
     std::vector<bool> is_prime(n, true);
+
+    size_t result = 0;
 
     for (int base = 2; base < n; base++)
     {
@@ -21,11 +22,10 @@ static size_t count_primes_lt(int n)
         {
             is_prime[i] = false;
         }
+
+        result++;
     }
 
-    // Skip first two is_prime entries as we started eliminating primes from base=2
-    // we don't want to include base=0 and base=1 in the count
-    size_t result = std::count(is_prime.begin() + 2, is_prime.end(), true);
     return result;
 }
 
