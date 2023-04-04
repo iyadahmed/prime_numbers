@@ -4,7 +4,7 @@
 
 int main(int argc, char **argv)
 {
-    int n = 10000000;
+    int n = 10'000'000;
 
     // Assume all numbers are prime at first
     std::vector<bool> is_prime(n, true);
